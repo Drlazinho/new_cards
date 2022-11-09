@@ -1,11 +1,28 @@
 // eslint-disable-next-line
 import React, { useState } from 'react'
 import './index.css'
-import { Bag } from 'phosphor-react'
+import { Bag, Target, Truck, Factory } from 'phosphor-react'
 import api from '../server/api'
 
 export default function Cards(props) {
 
+  function renderSwitch(param) {
+    switch(param) {
+      case 1 || "1": {
+        return <Factory size={32} />
+      }
+      case 2 || "2": {
+        return <Target size={32} />
+      }
+      case 3 || "3": {
+        return <Truck size={32} />
+      }
+      case 4 || "4": {
+        return <Bag size={32} />
+      }
+    }
+  };
+  
   return (
     <div>
       <div className="breadcrump" style={{backgroundColor: props.backgroundColor}}>
@@ -16,10 +33,15 @@ export default function Cards(props) {
             checked={props.check} 
           />
           <div className="descriptionBreadcrump">
-          <Bag size={32} />
+            {
+              <i>{renderSwitch(props.image)}</i>
+            }
             <p>{props.stateName}</p>
           </div>          
         </div> 
     </div>
   )
 }
+
+
+

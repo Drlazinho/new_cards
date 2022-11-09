@@ -21,20 +21,22 @@ export default function Home() {
         {card.map((item) => {
             if(item.dateStart === "" || item.dateStart === 0){
              return <Cards 
-             backgroundColor="#d1d1d1"
+             backgroundColor="#959595"
                 key={item.id} 
                 stateName={item.status}
                 date={item.dateStart}
+                image={item.id}
                 />                
               } 
               
-              if(item.dateStart !== ""){
+              if(item.dateStart !== "" ){
                 return  <Cards 
                 backgroundColor="#117e0b"
                 date={item.dateStart}
-                key={item.id} 
+                key={item.id}
                 stateName={item.status} 
                 check={true}
+                image={item.id}
             />    
             }
           })
