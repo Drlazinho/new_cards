@@ -1,0 +1,23 @@
+.container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+    
+    .content {
+      margin-top: 200px; 
+      position: relative;
+      display: inline-flex;
+      gap: .5rem;
+    }
+    
+    .content::after{
+      position: absolute;
+      content: " ";
+      width: 100%;
+      background-color: rgb(44, 44, 44);
+      height: 8px;
+      top: 15px;
+      z-index: -2;
+    } 

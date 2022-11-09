@@ -1,0 +1,24 @@
+{
+  "stages" : [
+      {
+          "id": 1,
+          "status" : "Produção",
+          "dateStart": "2022/11/09"
+      },
+      {
+          "id": 2,
+          "status" : "Inspeção",
+          "dateStart": ""
+      },
+      {
+          "id": 3,
+          "status" : "Trânsito",
+          "dateStart": "2022/11/09"
+      },
+      {
+          "id": 4,
+          "status" : "Entrega",
+          "dateStart": ""
+      }
+  ]
+}

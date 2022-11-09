@@ -1,0 +1,46 @@
+.breadcrumpChecked {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    background-color: rgb(17, 126, 11);
+    color: #fff;
+    border-radius: 8px;
+    min-width: 9rem;
+    max-width: 25%;
+  }
+  .breadcrumpChecking {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    background-color: rgb(182, 17, 17);
+    color: #fff;
+    border-radius: 8px;
+    min-width: 9rem;
+    max-width: 25%;
+  }
+  
+  .boxContent{
+    display: flex;
+    flex-direction: row;
+  }
+  .dataStyle{
+    text-align: center;
+  }
+  
+  .breadcrump {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    background-color: rgb(209, 209, 209);
+    color: #fff;
+    border-radius: 8px;
+    min-width: 9rem;
+    max-width: 25%;
+  }
+  .descriptionBreadcrump {
+    display: flex;
+    align-items: center;
+  }
