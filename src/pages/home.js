@@ -1,11 +1,13 @@
 import React from "react";
 import BreadCrump from "../components/BreadCumbs/index";
 import styles from "./styles.module.css";
+import Modal from "../components/Modal/index"
 
 export default function Home() {
 
   return (
     <>
+    <main>
       <div className={styles.container}>
           <BreadCrump 
           name1={"Produção"} 
@@ -25,6 +27,9 @@ export default function Home() {
           date4={"21/05/97"}          
           />
       </div>
+
+      <Modal/>
+    </main>
     </>
   );
 }
