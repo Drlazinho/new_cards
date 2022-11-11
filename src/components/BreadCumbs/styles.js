@@ -9,20 +9,22 @@ export const Container = styled.div`
   border-radius: 8px;
   gap: 2rem;
   width: 100%;
-  
-  &:after {
+
+
+  /* &:after {
     position: absolute;
     width: 90%;
     content: " ";
     width: 100%;
-    background-color: white;
+    background: #00ff15;   
     height: 12px;
-    top: 30px;
+    top: 40px;
     z-index: -2;
-  }
+  } */
+
+  /* background: linear-gradient(to left, #333, #333 50%, #eee 75%, #333 75%); */
 
   @media (max-width: 900px) {
     gap: .5rem;
   }
 `;
-

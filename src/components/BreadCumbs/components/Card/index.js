@@ -5,6 +5,7 @@ import bagImg from "../../../../assets/bag.png";
 import factoryImg from "../../../../assets/factory.png";
 import targetImg from "../../../../assets/target.png";
 import truckImg from "../../../../assets/truck.png";
+import { Checkbox } from "../Checkbox";
 
 export default function Card({ name, date, idImage }) {
   function renderSwitch(number) {
@@ -25,31 +26,37 @@ export default function Card({ name, date, idImage }) {
   }
 
   return (
-    <Container>
+    <>
       {date !== "" || null || 0 ? (
-        <Content checked>
-          <div className="interativeUser">
-            <input type="checkbox" disabled checked={true} />
-            <img className="img" src={renderSwitch(idImage)} alt="" />
-          </div>
-          <div className="descriptionBreadcrump">
-            <p>{name}</p>
-            <p>{date}</p>
-          </div>
-        </Content>
+        <Container checked>
+          <Content checked>
+            <div className="interativeUser">
+              <Checkbox isChecked />
+              {/* <input type="checkbox" disabled checked={true} /> */}
+              <img className="img" src={renderSwitch(idImage)} alt="" />
+            </div>
+            <div className="descriptionBreadcrump">
+              <p>{name}</p>
+              <p>{date}</p>
+            </div>
+          </Content>
+        </Container>
       ) : (
-        <Content>
-          <div className="interativeUser">
-            <input type="checkbox" disabled checked={false} />
-            <img className="img" src={renderSwitch(idImage)} alt="" />
-          </div>
+        <Container>
+          <Content>
+            <div className="interativeUser">
+              <Checkbox />
+              {/* <input type="checkbox" disabled checked={false} /> */}
+              <img className="img" src={renderSwitch(idImage)} alt="" />
+            </div>
 
-          <div className="descriptionBreadcrump">
-            <p>{name}</p>
-            <p>{"Sem Data"}</p>
-          </div>
-        </Content>
+            <div className="descriptionBreadcrump">
+              <p>{name}</p>
+              <p>{"Sem Data"}</p>
+            </div>
+          </Content>
+        </Container>
       )}
-    </Container>
+    </>
   );
 }

@@ -4,10 +4,36 @@ export const Container = styled.div`
   display: inline-flex;
   flex-direction: row;
   align-items: center;
+  position: relative;
   justify-content: space-around;
   border-radius: 8px;
   gap: 2rem;
   width: 100%;
+
+  /* LINE CARD */
+  &:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    width: 80%;
+    background-color: ${(props) => props.checked ? '#25cf4a' : '#ffffff' };
+    height: 1.3rem;
+    left: 8rem;
+    z-index: 1;
+  }
+
+  @media (max-width: 900px) {
+  
+    &:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    width: 80%;
+    /* background-color: ${(props) => props.checked ? '#25cf4a' : '#ffffff' }; */
+    height: 1.3rem;
+    left: 5rem;
+    z-index: 1;
+  }
+  }
+
 `;
 
 export const Content = styled.div`
@@ -21,9 +47,11 @@ export const Content = styled.div`
   align-items: center;
   gap: 1rem;
   justify-content: flex-start;
+  z-index: 2;
 
   .interativeUser{
     display: flex;
+    align-items: center;
     gap: 1rem;
 
     input {
@@ -56,8 +84,6 @@ export const Content = styled.div`
     img{
       width: 1.5rem;
     }
-
-
   }
 
   @media (max-width: 480px) {
