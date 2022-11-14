@@ -1,31 +1,20 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 
-import React, { useState } from 'react';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import React, { useState } from "react";
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 
-function ModalExample({titleStageModal, dateStageModal, checkedState}) {
+function ModalExample({ titleStageModal, dateStageModal, checkedState }) {
   const [modal, setModal] = useState(false);
-  // const [nestedModal, setNestedModal] = useState(false);
-  // const [closeAll, setCloseAll] = useState(false);
-
-
-  // function checkedStateStage() {
-  //   setModal(!modal)
-
-  // }
+  const [check, setChecked] = useState(true)
 
   const toggle = () => {
-    
-    setModal(!modal)
+    setModal(!modal);
   };
-  // const toggleNested = () => {
-  //   setNestedModal(!nestedModal);
-  //   setCloseAll(false);
-  // };
-  // const toggleAll = () => {
-  //   setNestedModal(!nestedModal);
-  //   setCloseAll(true);
-  // };
+
+  const checked = () => {
+    setChecked(!check)
+    setModal(!modal)
+  }
 
   return (
     <div>
@@ -35,17 +24,31 @@ function ModalExample({titleStageModal, dateStageModal, checkedState}) {
       <Modal isOpen={modal} toggle={toggle}>
         <ModalHeader toggle={toggle}>{titleStageModal}</ModalHeader>
         <ModalBody>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do <strong>{dateStageModal}</strong>          
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do{" "}
+          <strong>{dateStageModal}</strong>
           <br />
         </ModalBody>
         <ModalFooter>
           {/* CONDICIONAL DE MARCAÇÃO - PRECISA SER FEITA */}
-          <Button color="primary" onClick={() => checkedState(toggle())} >
-            Get Conclused
-          </Button>{' '}
-          <Button color="secondary" onClick={() => toggle()} >
-            Cancel
-          </Button>
+          {check === true ? (
+            <>
+              <Button color="primary" onClick={() => checkedState(checked())}>
+                Get Conclused
+              </Button>{" "}
+              <Button color="secondary" onClick={() => toggle()}>
+                Cancel
+              </Button>
+            </>
+          ) : (
+            <>
+              <Button color="danger" onClick={() => checkedState(checked())}>
+                Cancel Conclused
+              </Button>{" "}
+              <Button color="secondary" onClick={() => toggle()}>
+                Cancel
+              </Button>
+            </>
+          )}
         </ModalFooter>
       </Modal>
     </div>
