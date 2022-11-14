@@ -1,4 +1,4 @@
-import { Container, Line, Dot } from "./styles";
+import { Container } from "./styles";
 import React from "react";
 import Card from "./components/Card";
 
