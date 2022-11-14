@@ -5,22 +5,29 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 
 function ModalExample({ titleStageModal, dateStageModal, checkedState }) {
   const [modal, setModal] = useState(false);
-  const [check, setChecked] = useState(true)
+  const [check, setChecked] = useState(false);
 
   const toggle = () => {
     setModal(!modal);
   };
 
   const checked = () => {
-    setChecked(!check)
-    setModal(!modal)
-  }
+    setChecked(!check);
+    setModal(!modal);
+  };
 
   return (
     <div>
-      <Button color="danger" onClick={toggle}>
-        Click Me
-      </Button>
+      {check === true ? (
+        <Button color="danger" onClick={toggle}>
+          Click Me (Cancel)
+        </Button>
+      ) : (
+        <Button color="secondary" onClick={toggle}>
+          Click Me
+        </Button>
+      )}
+
       <Modal isOpen={modal} toggle={toggle}>
         <ModalHeader toggle={toggle}>{titleStageModal}</ModalHeader>
         <ModalBody>
@@ -30,7 +37,7 @@ function ModalExample({ titleStageModal, dateStageModal, checkedState }) {
         </ModalBody>
         <ModalFooter>
           {/* CONDICIONAL DE MARCAÇÃO - PRECISA SER FEITA */}
-          {check === true ? (
+          {check === false ? (
             <>
               <Button color="primary" onClick={() => checkedState(checked())}>
                 Get Conclused
