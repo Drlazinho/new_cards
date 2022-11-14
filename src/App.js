@@ -23,24 +23,24 @@ function App() {
           />
           <br />
           <br />
-          {/* <BreadCrump2
-            name1={"Produção"}
+          <BreadCrump2
+            name1={"生產"}
             idImage1={1}
             date1={""}
             btnToModalCheck1={""}
-            name2={"Inspeção"}
+            name2={"檢查"}
             idImage2={2}
             date2={"21/05/97"}
             btnToModalCheck2={""}
-            name3={"Transporte"}
+            name3={"運輸"}
             idImage3={3}
             date3={"21/05/97"}
             btnToModalCheck3={""}
-            name4={"Carregamento"}
+            name4={"正在加載"}
             idImage4={4}
             date4={"21/05/97"}
             btnToModalCheck4={""}
-          /> */}
+          />
           <br/>
           <br/>
         </div>

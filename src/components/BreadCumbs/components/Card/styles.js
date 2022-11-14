@@ -27,8 +27,6 @@ export const Container = styled.div`
       content: "";
       position: absolute;
       width: 80%;
-      /* background-color: ${(props) =>
-        props.checked ? "#25cf4a" : "#ffffff"}; */
       height: 1.1rem;
       left: 5rem;
       z-index: 1;

@@ -1,57 +1,106 @@
 import { Container, Content } from "./styles";
 import React, { useState } from "react";
 
-import bagImg from "../../../../assets/bag.png";
-import factoryImg from "../../../../assets/factory.png";
-import targetImg from "../../../../assets/target.png";
-import truckImg from "../../../../assets/truck.png";
+import bagActiveImg from "../../../../assets/bag-active.png";
+import factoryActiveImg from "../../../../assets/factory-active.png";
+import targetActiveImg from "../../../../assets/target-active.png";
+import truckActiveImg from "../../../../assets/truck-active.png";
+
+import bagInactiveImg from "../../../../assets/bag-inactive.png";
+import factoryInactiveImg from "../../../../assets/factory-inactive.png";
+import targetInactiveImg from "../../../../assets/target-inactive.png";
+import truckInactiveImg from "../../../../assets/truck-inactive.png";
 import { Checkbox } from "../Checkbox";
-import ModalExample from "../Modal";
+import ModalCheck from "../Modal";
 
 export default function Card({ name, date, idImage }) {
-  function renderSwitch(number) {
+  function renderSwitchActive(number) {
     switch (number) {
       case 1 || "1": {
-        return factoryImg;
+        return factoryActiveImg;
       }
       case 2 || "2": {
-        return targetImg;
+        return targetActiveImg;
       }
       case 3 || "3": {
-        return truckImg;
+        return truckActiveImg;
       }
       case 4 || "4": {
-        return bagImg;
+        return bagActiveImg;
+      }
+      default:
+        break;
+    }
+  }
+  function renderSwitchInactive(number) {
+    switch (number) {
+      case 1 || "1": {
+        return factoryInactiveImg;
+      }
+      case 2 || "2": {
+        return targetInactiveImg;
+      }
+      case 3 || "3": {
+        return truckInactiveImg;
+      }
+      case 4 || "4": {
+        return bagInactiveImg;
       }
       default:
         break;
     }
   }
 
-  const [checked, setChecked] = useState(false)
+  const [checked, setChecked] = useState(false);
 
   function checkedState() {
-    setChecked(!checked)
-    console.log("MUDANDO ESTADO")
-    console.log(checked)
+    setChecked(!checked);
   }
 
   return (
     <>
-        <Container checked={checked}>
+      <Container checked={checked}>
+        {/* <input type="checkbox" disabled checked={true} /> */}
+        {checked === true ? (
           <Content checked={checked}>
             <div className="interativeUser">
-              <Checkbox isChecked={checked}/>
-              {/* <input type="checkbox" disabled checked={true} /> */}
-              <img className="img" src={renderSwitch(idImage)} alt="" />
+              <Checkbox ischecked />
+              <img className="img" src={renderSwitchActive(idImage)} alt="" />
             </div>
+
+            <hr className="line-div" />
+
             <div className="descriptionBreadcrump">
               <p>{name}</p>
               <p>{date}</p>
-              <ModalExample titleStageModal={name} dateStageModal={date} checkedState={checkedState}/>
+              <ModalCheck
+                titleStageModal={name}
+                dateStageModal={date}
+                checkedState={checkedState}
+              />
             </div>
           </Content>
-        </Container>
+        ) : (
+          <Content checked={checked}>
+            <div className="interativeUser">
+              <Checkbox />
+              <img className="img" src={renderSwitchInactive(idImage)} alt="" />
+            </div>
+
+            <hr className="line-div" />
+
+            <div className="descriptionBreadcrump">
+              <p>{name}</p>
+              <p>processing</p>
+              <ModalCheck
+                titleStageModal={name}
+                dateStageModal={date}
+                checkedState={checkedState}
+              />
+            </div>
+          </Content>
+        )}
+      </Container>
     </>
   );
 }

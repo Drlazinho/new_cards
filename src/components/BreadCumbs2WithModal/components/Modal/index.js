@@ -2,8 +2,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import React, { useState } from "react";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+import './styles.css'
 
-function ModalExample({ titleStageModal, dateStageModal, checkedState }) {
+function ModalCheck({ titleStageModal, dateStageModal, checkedState }) {
   const [modal, setModal] = useState(false);
   const [check, setChecked] = useState(false);
 
@@ -19,11 +20,11 @@ function ModalExample({ titleStageModal, dateStageModal, checkedState }) {
   return (
     <div>
       {check === true ? (
-        <Button color="danger" onClick={toggle}>
-          Click Me (Cancel)
+        <Button onClick={toggle} className="btn-modal-cancel">
+          Click Me <br/> (Cancel)
         </Button>
       ) : (
-        <Button color="secondary" onClick={toggle}>
+        <Button onClick={toggle} className="btn-modal">
           Click Me
         </Button>
       )}
@@ -62,4 +63,4 @@ function ModalExample({ titleStageModal, dateStageModal, checkedState }) {
   );
 }
 
-export default ModalExample;
+export default ModalCheck;
