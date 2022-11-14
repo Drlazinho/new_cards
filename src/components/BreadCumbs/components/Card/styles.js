@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import amvox from "../../../../assets/amvox.png";
 
 export const Container = styled.div`
   display: inline-flex;
@@ -15,87 +16,113 @@ export const Container = styled.div`
     content: "";
     position: absolute;
     width: 80%;
-    background-color: ${(props) => props.checked ? '#25cf4a' : '#ffffff' };
-    height: 1.3rem;
+    background-color: ${(props) => (props.checked ? "#25cf4a" : "#ffffff")};
+    height: 1.1rem;
     left: 8rem;
     z-index: 1;
   }
 
   @media (max-width: 900px) {
-  
     &:not(:last-child)::after {
-    content: "";
-    position: absolute;
-    width: 80%;
-    /* background-color: ${(props) => props.checked ? '#25cf4a' : '#ffffff' }; */
-    height: 1.3rem;
-    left: 5rem;
-    z-index: 1;
+      content: "";
+      position: absolute;
+      width: 80%;
+      /* background-color: ${(props) =>
+        props.checked ? "#25cf4a" : "#ffffff"}; */
+      height: 1.1rem;
+      left: 5rem;
+      z-index: 1;
+    }
   }
-  }
-
 `;
 
 export const Content = styled.div`
   border-radius: 8px;
   width: 100%;
   padding: 1rem;
-  background-color: ${(props) => props.checked ? '#25cf4a' : '#ffffff' };  
-  color: ${(props) => props.checked ? '#ffffff' : '#000000'};  
+  background-image: url(${amvox});
+  background-repeat: no-repeat;
+  background-size: auto 100%;
+  background-color: black;
+  color: ${(props) => (props.checked ? "#00FF38" : "#555555")};
   width: 100%;
   display: flex;
   align-items: center;
   gap: 1rem;
   justify-content: flex-start;
+  -webkit-box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.28);
+  -moz-box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.28);
+  box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.28);
   z-index: 2;
 
-  .interativeUser{
+  .line-div {
+    background-color:  ${(props) => (props.checked ? "#00FF38" : "#555555")};
+    height: 100px;
+    width: 2px;
+    opacity: 1;
+
+  }
+
+  .interativeUser {
     display: flex;
     align-items: center;
     gap: 1rem;
 
     input {
-    min-width: 20px;
-    min-height: 20px;  
-  }  
-
+      min-width: 20px;
+      min-height: 20px;
+    }
   }
 
-  img{
-    width: 4rem;
+  img {
+    width: 4.5rem;
   }
-
 
   .descriptionBreadcrump {
     display: flex;
     flex-direction: column;
-    text-align: center;
-    align-items: center;
-    line-height: .5;
-    gap: .5rem;
+    gap: 0.5rem;
     justify-content: center;
+    align-items: center;
     white-space: nowrap;
+    line-height: .3;
+    font-size: 1.2rem;
+    font-weight: bold;
   }
 
-  @media (max-width: 900px) {
+  @media (max-width: 1170px) {
     flex-direction: column;
     align-items: center;
     text-align: center;
     gap: 5px;
-    padding: .5rem;
+    padding: 0.5rem;
 
-    img{
-      width: 1.5rem;
+    .line-div{
+      background-color:  ${(props) => (props.checked ? "#00FF38" : "#555555")};
+      height: 2px;
+      width: 70%;
+      opacity: 1;
+    }
+
+    img {
+      width: 2.5rem;
     }
   }
 
-  @media (max-width: 480px) {
-    padding: .5rem 0;
+  @media (max-width: 500px) {
+    background-image: none;
+    padding: 0.5rem 0;
+    color: ${(props) => (props.checked ? "#00FF38" : "#555555")};
 
-    .interativeUser{
-      gap:.5rem;
+
+    .interativeUser {
+      gap: 0.5rem;
       flex-direction: column;
     }
-  }
 
+    .descriptionBreadcrump {
+      font-size: 1rem;
+    }
+
+  }
 `;

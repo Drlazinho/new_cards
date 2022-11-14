@@ -1,13 +1,13 @@
 import { InputCheckbox, LabelCheck } from "./style";
 import check from '../../../../assets/check.png'
 
-export function Checkbox({ isChecked }) {
+export function Checkbox({ checked }) {
   return (
     <>
-      <InputCheckbox  type="checkbox" name="checkbox" checked={isChecked}  value="value" hidden />
+      <InputCheckbox  type="checkbox" name="checkbox" checked={checked}  value="value" hidden />
       <LabelCheck >
         <div className="checkContainer">
-           { isChecked && <img src={check} alt="" /> }     
+           { checked && <img src={check} alt="" /> }     
         </div>
       </LabelCheck>
     </>

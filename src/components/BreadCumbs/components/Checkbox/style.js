@@ -15,15 +15,6 @@ export const InputCheckbox = styled.input`
     justify-content: center;
     align-items: center;
   }
-
-  input:checked + .labelCheck .checkContainer {
-    border: 2px solid blue;
-    background: green;
-  }
-
-  /* .labelCheck .checkContainer > svg {
-    color: var(--gray-100);
-  } */
 `;
 
 export const LabelCheck = styled.label`
@@ -33,7 +24,8 @@ export const LabelCheck = styled.label`
   width: 1.8rem;
 
   .checkContainer {
-    border: 2px solid #00ff38;
+    /* border: 2px solid #00ff38; */
+    border: 2px solid ${(props) => props.ischecked ? "#00ff38" : "#ededed55"};
     background: #000;
     border-radius: 50%;
     height: 1.8rem;

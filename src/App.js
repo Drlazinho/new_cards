@@ -23,7 +23,7 @@ function App() {
           />
           <br />
           <br />
-          <BreadCrump2
+          {/* <BreadCrump2
             name1={"Produção"}
             idImage1={1}
             date1={""}
@@ -40,7 +40,9 @@ function App() {
             idImage4={4}
             date4={"21/05/97"}
             btnToModalCheck4={""}
-          />
+          /> */}
+          <br/>
+          <br/>
         </div>
       </main>
     </>

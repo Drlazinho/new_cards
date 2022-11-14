@@ -1,15 +1,29 @@
 import { InputCheckbox, LabelCheck } from "./style";
-import check from '../../../../assets/check.png'
+import check from "../../../../assets/check.png";
 
-export function Checkbox({ isChecked }) {
+export function Checkbox({ ischecked }) {
   return (
     <>
-      <InputCheckbox  type="checkbox" name="checkbox" checked={isChecked}  value="value" hidden />
-      <LabelCheck >
-        <div className="checkContainer">
-           { isChecked && <img src={check} alt="" /> }     
-        </div>
-      </LabelCheck>
+      <InputCheckbox
+        type="checkbox"
+        name="checkbox"
+        checked={ischecked}
+        value="value"
+        hidden
+      />
+      {ischecked ? (
+        <LabelCheck ischecked>
+          <div className="checkContainer">
+            {ischecked && <img src={check} alt="" />}
+          </div>
+        </LabelCheck>
+      ) : (
+        <LabelCheck>
+          <div className="checkContainer">
+            {ischecked && <img src={check} alt="" />}
+          </div>
+        </LabelCheck>
+      )}
     </>
-  )
+  );
 }
