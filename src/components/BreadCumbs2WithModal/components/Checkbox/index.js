@@ -7,7 +7,7 @@ export function Checkbox({ ischecked }) {
       <InputCheckbox
         type="checkbox"
         name="checkbox"
-        checked={ischecked}
+        defaultChecked={ischecked}
         value="value"
         hidden
       />
