@@ -32,6 +32,18 @@ export const Container = styled.div`
       z-index: 1;
     }
   }
+
+  @media (max-width: 500px) {
+    &:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      width: 10%;
+      top: 80%;
+      left: 45%;
+      height: 50%;
+      z-index: 1;
+    }
+  }
 `;
 
 export const Content = styled.div`
