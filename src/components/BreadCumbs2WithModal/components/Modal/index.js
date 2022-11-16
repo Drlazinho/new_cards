@@ -1,30 +1,37 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import './styles.css'
 
 function ModalCheck({ titleStageModal, dateStageModal, checkedState }) {
   const [modal, setModal] = useState(false);
   const [check, setChecked] = useState(false);
-
+  
+  const btnModal = useRef(modal)
+  const RefModal = () => {
+    btnModal.current = modal
+  }
+  
   const toggle = () => {
     setModal(!modal);
   };
-
+  
   const checked = () => {
     setChecked(!check);
     setModal(!modal);
   };
 
+
   return (
     <div>
       {check === true ? (
-        <Button onClick={toggle} className="btn-modal-cancel">
+        <Button ref={RefModal}
+        onClick={toggle} className="btn-modal-cancel">
           Click Me <br/> (Cancel)
         </Button>
       ) : (
-        <Button onClick={toggle} className="btn-modal">
+        <Button ref={RefModal} onClick={toggle} className="btn-modal">
           Click Me
         </Button>
       )}
