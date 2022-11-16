@@ -15,7 +15,7 @@ export const Container = styled.div`
   &:not(:last-child)::after {
     content: "";
     position: absolute;
-    width: 80%;
+    width: 100%;
     background-color: ${(props) => (props.checked ? "#25cf4a" : "#ffffff")};
     height: 1.1rem;
     left: 8rem;
@@ -120,7 +120,6 @@ export const Content = styled.div`
   }
 
   @media (max-width: 500px) {
-    background-image: none;
     padding: 0.5rem 0;
     color: ${(props) => (props.checked ? "#00FF38" : "#555555")};
 
