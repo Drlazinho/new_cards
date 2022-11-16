@@ -13,7 +13,7 @@ import truckInactiveImg from "../../../../assets/truck-inactive.png";
 import { Checkbox } from "../Checkbox";
 import ModalCheck from "../Modal";
 
-export default function Card({ name, date, idImage }) {
+export default function Card({ name, date, idImage, modalResolution }) {
   function renderSwitchActive(number) {
     switch (number) {
       case 1 || "1": {
@@ -73,11 +73,14 @@ export default function Card({ name, date, idImage }) {
             <div className="descriptionBreadcrump">
               <p>{name}</p>
               <p>{date}</p>
-              <ModalCheck
-                titleStageModal={name}
-                dateStageModal={date}
-                checkedState={checkedState}
-              />
+              {
+                modalResolution !== 0 | null | undefined && 
+                   <ModalCheck
+                    titleStageModal={name}
+                    dateStageModal={date}
+                    checkedState={checkedState}
+                 /> 
+              }
             </div>
           </Content>
         ) : (
@@ -92,11 +95,14 @@ export default function Card({ name, date, idImage }) {
             <div className="descriptionBreadcrump">
               <p>{name}</p>
               <p>processing</p>
-              <ModalCheck
-                titleStageModal={name}
-                dateStageModal={date}
-                checkedState={checkedState}
-              />
+              {
+                modalResolution && 
+                   <ModalCheck
+                    titleStageModal={name}
+                    dateStageModal={date}
+                    checkedState={checkedState}
+                  /> 
+              }
             </div>
           </Content>
         )}

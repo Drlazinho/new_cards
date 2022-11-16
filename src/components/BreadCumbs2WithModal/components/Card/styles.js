@@ -17,7 +17,7 @@ export const Container = styled.div`
     position: absolute;
     width: 100%;
     background-color: ${(props) => (props.checked ? "#25cf4a" : "#ffffff")};
-    height: 1.3rem;
+    height: 1.1rem;
     left: 8rem;
     z-index: 1;
   }
@@ -27,7 +27,7 @@ export const Container = styled.div`
       content: "";
       position: absolute;
       width: 80%;
-      height: 1.3rem;
+      height: 1.1rem;
       left: 5rem;
       z-index: 1;
     }
@@ -66,10 +66,11 @@ export const Content = styled.div`
   z-index: 2;
 
   .line-div {
-    background-color: ${(props) => (props.checked ? "#00FF38" : "#555555")};
+    background-color:  ${(props) => (props.checked ? "#00FF38" : "#555555")};
     height: 100px;
     width: 2px;
     opacity: 1;
+
   }
 
   .interativeUser {
@@ -84,18 +85,19 @@ export const Content = styled.div`
   }
 
   img {
-    width: 4rem;
+    width: 4.5rem;
   }
 
   .descriptionBreadcrump {
     display: flex;
     flex-direction: column;
-    text-align: center;
-    align-items: center;
-    line-height: 0.5;
     gap: 0.5rem;
     justify-content: center;
+    align-items: center;
     white-space: nowrap;
+    line-height: .3;
+    font-size: 1.2rem;
+    font-weight: bold;
   }
 
   @media (max-width: 1170px) {
@@ -105,8 +107,8 @@ export const Content = styled.div`
     gap: 5px;
     padding: 0.5rem;
 
-    .line-div {
-      background-color: ${(props) => (props.checked ? "#00FF38" : "#555555")};
+    .line-div{
+      background-color:  ${(props) => (props.checked ? "#00FF38" : "#555555")};
       height: 2px;
       width: 70%;
       opacity: 1;
@@ -121,6 +123,7 @@ export const Content = styled.div`
     padding: 0.5rem 0;
     color: ${(props) => (props.checked ? "#00FF38" : "#555555")};
 
+
     .interativeUser {
       gap: 0.5rem;
       flex-direction: column;
@@ -129,5 +132,6 @@ export const Content = styled.div`
     .descriptionBreadcrump {
       font-size: 1rem;
     }
+
   }
 `;
