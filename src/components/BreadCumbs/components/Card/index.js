@@ -52,7 +52,8 @@ export default function Card({ name, date, idImage }) {
 
   return (
     <>
-      {date !== "" || null || 0 ? (
+    {/*   */}
+      {date !== null && date !== 0 && date !== undefined && date !== "" ? (
         <Container checked>
           <Content checked>
             <div className="interativeUser">
