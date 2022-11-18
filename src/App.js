@@ -4,10 +4,60 @@ import MapGlobal from "./components/MapGlobal";
 import styles from "./styles.module.css";
 
 function App() {
-
-  const data = {
-    entregas : undefined
-  }
+  const EntregaNavios = {
+    navios: [
+      {
+        nome: "Naruto",
+        data: "22/11/11",
+        produto: [],
+      },
+      {
+        nome: "Kurama",
+        data: "22/11/11",
+        produto: [],
+      },
+      {
+        nome: "Bleach",
+        data: "22/11/11",
+        produto: [],
+      },
+      {
+        nome: "Pikachu",
+        data: "22/11/11",
+        produto: [],
+      },
+      {
+        nome: "Hell",
+        data: "22/11/11",
+        produto: [],
+      },
+      {
+        nome: "Vegeta",
+        data: "22/11/11",
+        produto: [],
+      },
+      {
+        nome: "Boruto",
+        data: "22/11/11",
+        produto: [],
+      },
+      {
+        nome: "Goku",
+        data: "22/11/11",
+        produto: [],
+      },
+      {
+        nome: "Shikamaru",
+        data: "22/11/11",
+        produto: [],
+      },
+      {
+        nome: "Hinata",
+        data: "22/11/11",
+        produto: [],
+      },
+    ],
+  };
 
   return (
     <>
@@ -16,7 +66,7 @@ function App() {
           <BreadCrump
             name1={"Produção"}
             idImage1={1}
-            date1={data.entregas}
+            date1={''}
             name2={"Inspeção"}
             idImage2={2}
             date2={"21/05/97"}
@@ -32,7 +82,7 @@ function App() {
           <BreadCrump2
             name1={"生產"}
             idImage1={1}
-            date1={data.entregas}
+            date1={''}
             btnToModalCheck1={"sdadas"}
             name2={"檢查"}
             idImage2={2}
@@ -47,10 +97,14 @@ function App() {
             date4={"21/05/97"}
             btnToModalCheck4={""}
           />
-          <MapGlobal/>
-          <br/>
-          <br/>
+          <br />
+          <br />
 
+          {/* Como as informações deverão chegar?! Objeto? Array? String */}
+          <MapGlobal dates={EntregaNavios.navios}/>
+
+          <br />
+          <br />
         </div>
       </main>
     </>

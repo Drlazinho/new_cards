@@ -15,5 +15,10 @@
   .map {
     background-color: rgb(33, 83, 124);
     border: 1px solid red;
-    width: 80% !important;
+    width: 70% !important;
+  }
+
+  .containers-traffic {
+    display: flex;
+    flex-direction: column;
   }
