@@ -2,6 +2,9 @@ import BreadCrump from "./components/BreadCumbs";
 import BreadCrump2 from "./components/BreadCumbs2WithModal";
 import MapGlobal from "./components/MapGlobal";
 import styles from "./styles.module.css";
+import React, { useState } from "react";
+import ReactTooltip from "react-tooltip";
+
 
 function App() {
   const EntregaNavios = {
@@ -59,6 +62,9 @@ function App() {
     ],
   };
 
+  const [content, setContent] = useState("");
+
+
   return (
     <>
       <main>
@@ -101,8 +107,8 @@ function App() {
           <br />
 
           {/* Como as informações deverão chegar?! Objeto? Array? String */}
-          <MapGlobal dates={EntregaNavios.navios}/>
-
+          <MapGlobal setTooltipContent={setContent} dates={EntregaNavios.navios}/>
+          <ReactTooltip>{content}</ReactTooltip>
           <br />
           <br />
         </div>
