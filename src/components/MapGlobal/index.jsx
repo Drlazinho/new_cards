@@ -28,15 +28,13 @@ const MapChart = ({
 }) => {
   const datesContainers = data; //Containers
 
-  const datesFixedPlace = [
-    dateSaida,
-    dateFase1,
-    dateFase2,
-    dateFase3,
-    dateEntregaFinal,
-  ];
-
-  const testeData = "26/11/22";
+  // const datesFixedPlace = [
+  //   dateSaida,
+  //   dateFase1,
+  //   dateFase2,
+  //   dateFase3,
+  //   dateEntregaFinal,
+  // ];
 
   const markers = [
     //Coord: LONG E LAT
@@ -180,30 +178,27 @@ const MapChart = ({
 
                 <text
                   textAnchor="middle"
-                  y={-30}
-                  style={{ fontFamily: "system-ui", fill: "#ffffff" }}
+                  y={-40}
+                  style={{ fontFamily: "system-ui", fill: "#ffffff", fontSize: ".9rem" }}
                 >
                   {name}
                 </text>
 
                 <text
                   textAnchor="middle"
-                  y={30}
-                  style={{ fontFamily: "system-ui", fill: "#ffffff" }}
+                  y={-25}
+                  style={{ fontFamily: "system-ui", fill: "#ffffff", fontSize: ".8rem" }}
                 >
                   {date}
                 </text>
 
                 {datesContainers.map((item, indice) => {
-                  var distance = indice * 4;
+                  var distance = indice * 6;
+                  console.log(item.date)
                   console.log(date)
                   return (
                     <>
-                      {date !== null &&
-                      date !== 0 &&
-                      date !== undefined &&
-                      date !== "" &&
-                      date !== testeData ? (
+                      {item.date === date && (
                         <>
                           <text
                             key={indice}
@@ -211,14 +206,14 @@ const MapChart = ({
                             style={{
                               fontFamily: "system-ui",
                               fill: "#ff8800",
-                              fontSize: "21px",
+                              fontSize: "3rem",
                               display: "flex",
                               flexDirection: "row",
                             }}
                           >
                             {"."}
                           </text>
-                          <text
+                          {/* <text
                             y={20}
                             x={10}
                             style={{
@@ -228,21 +223,9 @@ const MapChart = ({
                             }}
                           >
                             {datesContainers.length}
-                          </text>
-                        </>
-                      ) : (
-                        <text
-                          y={20}
-                          x={10}
-                          style={{
-                            fontFamily: "system-ui",
-                            fill: "#ff8800",
-                            fontSize: "21px",
-                          }}
-                        >
-                          nd
-                        </text>
-                      )}
+                          </text> */}
+                        </>)
+                      }
                     </>
                   );
                 })}

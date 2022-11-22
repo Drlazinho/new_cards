@@ -11,43 +11,43 @@ function App() {
     containers: [
       {
         nome: "Naruto",
-        date: "22/11/11",
+        date: "22/11/2022",
         number: 1,
         produto: [],
       },
       {
         nome: "Kurama",
-        date: "26/11/11",
+        date: "26/11/2022",
         number: 2,
         produto: [],
       },
       {
         nome: "Bleach",
-        date: "26/11/11",
+        date: "26/11/2022",
         number: 3,
         produto: [],
       },
       {
         nome: "Pikachu",
-        date: "22/11/11",
+        date: "22/11/2022",
         number: 4,
         produto: [],
       },
       {
         nome: "Hell",
-        date: "24/11/11",
+        date: "24/11/2022",
         number: 5,
         produto: [],
       },
       {
         nome: "Vegeta",
-        date: "24/11/11",
+        date: "24/11/2022",
         number: 6,
         produto: [],
       },
       {
         nome: "Boruto",
-        date: "23/11/11",
+        date: "23/11/2022",
         number: 7,
         produto: [],
       },
@@ -110,7 +110,7 @@ function App() {
           <ReactTooltip>{content}</ReactTooltip>
           <br />
           <br />
-          <MapBrazil />
+          {/* <MapBrazil /> */}
         </div>
       </main>
     </>
