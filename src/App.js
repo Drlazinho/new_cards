@@ -5,6 +5,7 @@ import styles from "./styles.module.css";
 import React, { useState } from "react";
 import ReactTooltip from "react-tooltip";
 import MapBrazil from "./components/MapBrazil";
+import InputTeste from "./components/Input";
 
 function App() {
   const qntContainers = {
@@ -12,43 +13,43 @@ function App() {
       {
         nome: "Naruto",
         date: "22/11/2022",
-        number: 1,
+        number: 100,
         produto: [],
       },
       {
         nome: "Kurama",
         date: "26/11/2022",
-        number: 2,
+        number: 200,
         produto: [],
       },
       {
         nome: "Bleach",
         date: "26/11/2022",
-        number: 3,
+        number: 300,
         produto: [],
       },
       {
         nome: "Pikachu",
         date: "22/11/2022",
-        number: 4,
+        number: 400,
         produto: [],
       },
       {
         nome: "Hell",
         date: "24/11/2022",
-        number: 5,
+        number: 500,
         produto: [],
       },
       {
         nome: "Vegeta",
-        date: "24/11/2022",
-        number: 6,
+        date: "25/11/2022",
+        number: 600,
         produto: [],
       },
       {
         nome: "Boruto",
         date: "23/11/2022",
-        number: 7,
+        number: 700,
         produto: [],
       },
     ],
@@ -60,7 +61,7 @@ function App() {
     <>
       <main>
         <div className={styles.container}>
-          <BreadCrump
+          {/* <BreadCrump
             name1={"Produção"}
             idImage1={1}
             date1={""}
@@ -95,7 +96,7 @@ function App() {
             btnToModalCheck4={""}
           />
           <br />
-          <br />
+          <br /> */}
 
           {/* Como as informações deverão chegar?! Objeto? Array? String */}
           <MapGlobal
@@ -104,13 +105,14 @@ function App() {
             dateSaida={"22/11/2022"}
             dateFase1={"23/11/2022"}
             dateFase2={"24/11/2022"}
-            dateFase3={"25/11/2022"}
-            dateEntregaFinal={"26/11/2022"}
+            dateFase3={"26/11/2022"}
+            dateEntregaFinal={"27/11/2022"}
           />
           <ReactTooltip>{content}</ReactTooltip>
           <br />
           <br />
           {/* <MapBrazil /> */}
+          {/* <InputTeste/> */}
         </div>
       </main>
     </>

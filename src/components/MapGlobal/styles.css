@@ -15,7 +15,7 @@
   .mapBox {
     background-color: rgb(33, 83, 124);
     border: 1px solid red;
-    width: 65% !important;
+    width: 90% !important;
     position: relative;
   }
 
@@ -108,3 +108,21 @@
     gap: 1rem;
     justify-content: flex-end;
   }
+
+  .containerPoint {
+    cursor: pointer !important;
+
+  }
+
+  /* .box1 {
+    position: absolute;
+    width: 10%;
+    background-color: #ff0000;
+    height: 10%;
+    left: 20%;
+    top: 70%;
+  }
+
+  .box:hover {
+    background-color: #bebebe;
+  } */

@@ -38,30 +38,31 @@ const MapChart = ({
 
   const markers = [
     //Coord: LONG E LAT
-    { name: "Saída", coordinates: [119.449013, 26.024702], date: dateSaida },
+    { name: "Saída", coordinates: [119.449013, 26.024702], dateMarkerMap: dateSaida },
     {
       name: "Transporte Fase I",
       coordinates: [81.279716, 5.339848],
-      date: dateFase1,
+      dateMarkerMap: dateFase1,
     },
     {
       name: "Transporte Fase II",
       coordinates: [43.313079, 12.178965],
-      date: dateFase2,
+      dateMarkerMap: dateFase2,
     },
     {
       name: "Transporte Fase III",
       coordinates: [-6.608796, 34.85889],
-      date: dateFase3,
+      dateMarkerMap: dateFase3,
     },
     {
       name: "AMVOX - Entrega",
       coordinates: [-38.303833, -12.731694],
-      date: dateEntregaFinal,
+      dateMarkerMap: dateEntregaFinal,
     },
   ];
 
   const [position, setPosition] = useState({ coordinates: [0, 0], zoom: 1 });
+  const [filter, setFilter] = useState("");
 
   function handleZoomIn() {
     if (position.zoom >= 4) return;
@@ -80,23 +81,34 @@ const MapChart = ({
   return (
     <div className="mapBox" data-tip="">
       {/* SEARCHFILTER */}
-      <div className="boxFilter">
+      <form className="boxFilter">
         <input className="dateInput" type="date" />
 
         <div className="searchInput">
-          <input type="number" placeholder="Procurar pelo nº do container" />
-          <button>
+          <input
+            list="numbersContainers"
+            name="numbersContainers"
+            id="numbersContainers"
+            placeholder="Procurar pelo nº do container"
+            onChange={(e) => setFilter(e.target.value)}
+          />
+          <datalist id="numberContainers">
+            {datesContainers.map((item) => <option value={item.number}>{(item.number)}</option>
+            )}
+          </datalist>
+
+          <button type="submit">
             <BsSearch />
             Pesquisar
           </button>
         </div>
-      </div>
+      </form>
 
       {/* Buttons */}
       <div className="controls">
         {/* Resolver problemas dos botões - Prioridade Secundária - Finalização */}
-        <ButtonZoom zoomEffects={handleZoomIn} children={<GoPlus />} />
-        <ButtonZoom zoomEffects={handleZoomIn} children={<TiMinus />} />
+        {/* <ButtonZoom zoomEffects={handleZoomIn} children={<GoPlus />} />
+        <ButtonZoom zoomEffects={handleZoomOut} children={<TiMinus />} /> */}
       </div>
 
       {/* MAPA */}
@@ -114,16 +126,6 @@ const MapChart = ({
                   geography={geo}
                   fill="#000000"
                   stroke="#853333"
-                  onMouseEnter={() => {
-                    setTooltipContent(`${geo.properties.name}`);
-                  }}
-                  onMouseLeave={() => {
-                    setTooltipContent("");
-                  }}
-                  style={{
-                    hover: { fill: "#ff0000" },
-                    pressed: { fill: "#02A" },
-                  }}
                 />
               ))
             }
@@ -159,9 +161,12 @@ const MapChart = ({
             strokeLinecap="round"
           />
 
-          {markers.map(({ name, coordinates, date, indice }) => (
+
+
+          {markers.map(({ name, coordinates, dateMarkerMap, indice }) => (
             <>
               {/* marcadores */}
+              {/* filter pode impactar aki */}
               <Marker key={indice} coordinates={coordinates}>
                 {/* <Marker key={name} coordinates={newCoordinates}> */}
                 <g
@@ -179,7 +184,11 @@ const MapChart = ({
                 <text
                   textAnchor="middle"
                   y={-40}
-                  style={{ fontFamily: "system-ui", fill: "#ffffff", fontSize: ".9rem" }}
+                  style={{
+                    fontFamily: "system-ui",
+                    fill: "#ffffff",
+                    fontSize: ".9rem",
+                  }}
                 >
                   {name}
                 </text>
@@ -187,45 +196,54 @@ const MapChart = ({
                 <text
                   textAnchor="middle"
                   y={-25}
-                  style={{ fontFamily: "system-ui", fill: "#ffffff", fontSize: ".8rem" }}
+                  style={{
+                    fontFamily: "system-ui",
+                    fill: "#ffffff",
+                    fontSize: ".8rem",
+                  }}
                 >
-                  {date}
+                  {dateMarkerMap}
                 </text>
 
-                {datesContainers.map((item, indice) => {
-                  var distance = indice * 6;
-                  console.log(item.date)
-                  console.log(date)
+                {/* {datesContainers.map((item, indice) => {
                   return (
                     <>
                       {item.date === date && (
                         <>
                           <text
+                            className="containerPoint"
                             key={indice}
-                            y={distance}
                             style={{
                               fontFamily: "system-ui",
                               fill: "#ff8800",
-                              fontSize: "3rem",
+                              fontSize: "1rem",
                               display: "flex",
                               flexDirection: "row",
                             }}
                           >
-                            {"."}
                           </text>
-                          {/* <text
-                            y={20}
-                            x={10}
-                            style={{
-                              fontFamily: "system-ui",
-                              fill: "#ff8800",
-                              fontSize: "21px",
-                            }}
-                          >
-                            {datesContainers.length}
-                          </text> */}
-                        </>)
-                      }
+                        </>
+                      )}
+                    </>
+                  );
+                })} */}
+
+                {datesContainers.filter(container => container.date === dateMarkerMap).map((container) => {
+
+                  return (
+                    <>                      
+                      <text
+                        y = {21}
+                        className="containerPoint"
+                        key={indice}
+                        style={{
+                          fontFamily: "system-ui",
+                          fill: "#ff8800",
+                          fontSize: "1rem",
+                        }}
+                      >
+                        {container.length}
+                      </text> 
                     </>
                   );
                 })}
