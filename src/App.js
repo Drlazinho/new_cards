@@ -4,66 +4,57 @@ import MapGlobal from "./components/MapGlobal";
 import styles from "./styles.module.css";
 import React, { useState } from "react";
 import ReactTooltip from "react-tooltip";
-
+import MapBrazil from "./components/MapBrazil";
 
 function App() {
-  const EntregaNavios = {
-    navios: [
+  const qntContainers = {
+    containers: [
       {
         nome: "Naruto",
-        data: "22/11/11",
+        date: "22/11/11",
+        number: 1,
         produto: [],
       },
       {
         nome: "Kurama",
-        data: "22/11/11",
+        date: "26/11/11",
+        number: 2,
         produto: [],
       },
       {
         nome: "Bleach",
-        data: "22/11/11",
+        date: "26/11/11",
+        number: 3,
         produto: [],
       },
       {
         nome: "Pikachu",
-        data: "22/11/11",
+        date: "22/11/11",
+        number: 4,
         produto: [],
       },
       {
         nome: "Hell",
-        data: "22/11/11",
+        date: "24/11/11",
+        number: 5,
         produto: [],
       },
       {
         nome: "Vegeta",
-        data: "22/11/11",
+        date: "24/11/11",
+        number: 6,
         produto: [],
       },
       {
         nome: "Boruto",
-        data: "22/11/11",
-        produto: [],
-      },
-      {
-        nome: "Goku",
-        data: "22/11/11",
-        produto: [],
-      },
-      {
-        nome: "Shikamaru",
-        data: "22/11/11",
-        produto: [],
-      },
-      {
-        nome: "Hinata",
-        data: "22/11/11",
+        date: "23/11/11",
+        number: 7,
         produto: [],
       },
     ],
   };
 
   const [content, setContent] = useState("");
-
 
   return (
     <>
@@ -72,7 +63,7 @@ function App() {
           <BreadCrump
             name1={"Produção"}
             idImage1={1}
-            date1={''}
+            date1={""}
             name2={"Inspeção"}
             idImage2={2}
             date2={"21/05/97"}
@@ -88,7 +79,7 @@ function App() {
           <BreadCrump2
             name1={"生產"}
             idImage1={1}
-            date1={''}
+            date1={""}
             btnToModalCheck1={"sdadas"}
             name2={"檢查"}
             idImage2={2}
@@ -107,10 +98,19 @@ function App() {
           <br />
 
           {/* Como as informações deverão chegar?! Objeto? Array? String */}
-          <MapGlobal setTooltipContent={setContent} dates={EntregaNavios.navios}/>
+          <MapGlobal
+            setTooltipContent={setContent}
+            data={qntContainers.containers}
+            dateSaida={"22/11/2022"}
+            dateFase1={"23/11/2022"}
+            dateFase2={"24/11/2022"}
+            dateFase3={"25/11/2022"}
+            dateEntregaFinal={"26/11/2022"}
+          />
           <ReactTooltip>{content}</ReactTooltip>
           <br />
           <br />
+          <MapBrazil />
         </div>
       </main>
     </>

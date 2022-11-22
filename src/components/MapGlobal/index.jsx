@@ -8,37 +8,60 @@ import {
   Line,
 } from "react-simple-maps";
 import "./styles.css";
+import { BsSearch } from "react-icons/bs";
+import { TiMinus } from "react-icons/ti";
+import { GoPlus } from "react-icons/go";
+import ButtonZoom from "./components/ButtonZoom";
+import { MarkerMap } from "./components/MarkersMap";
 
 const geoUrl =
   "https://raw.githubusercontent.com/deldersveld/topojson/master/world-countries.json";
 
-const markers = [
-  //Coord: LONG E LAT
-  { name: "Saída", coordinates: [119.449013, 26.024702], date: "17/11/2022" },
-  {
-    name: "Transporte Fase I",
-    coordinates: [81.279716, 5.339848],
-    date: "jyfuyfuj",
-  },
-  {
-    name: "Transporte Fase II",
-    coordinates: [43.313079, 12.178965],
-    date: "cgyfhvjyfhv",
-  },
-  {
-    name: "Transporte Fase III",
-    coordinates: [-6.608796, 34.85889],
-    date: "dasdasda",
-  },
-  {
-    name: "AMVOX - Entrega",
-    coordinates: [-38.303833, -12.731694],
-    date: "dasdafafgweg",
-  },
-];
+const MapChart = ({
+  data,
+  setTooltipContent,
+  dateSaida,
+  dateFase1,
+  dateFase2,
+  dateFase3,
+  dateEntregaFinal,
+}) => {
+  const datesContainers = data; //Containers
 
-const MapChart = ({ dates, setTooltipContent }) => {
-  const datesTraffic = dates;
+  const datesFixedPlace = [
+    dateSaida,
+    dateFase1,
+    dateFase2,
+    dateFase3,
+    dateEntregaFinal,
+  ];
+
+  const testeData = "26/11/22";
+
+  const markers = [
+    //Coord: LONG E LAT
+    { name: "Saída", coordinates: [119.449013, 26.024702], date: dateSaida },
+    {
+      name: "Transporte Fase I",
+      coordinates: [81.279716, 5.339848],
+      date: dateFase1,
+    },
+    {
+      name: "Transporte Fase II",
+      coordinates: [43.313079, 12.178965],
+      date: dateFase2,
+    },
+    {
+      name: "Transporte Fase III",
+      coordinates: [-6.608796, 34.85889],
+      date: dateFase3,
+    },
+    {
+      name: "AMVOX - Entrega",
+      coordinates: [-38.303833, -12.731694],
+      date: dateEntregaFinal,
+    },
+  ];
 
   const [position, setPosition] = useState({ coordinates: [0, 0], zoom: 1 });
 
@@ -56,36 +79,26 @@ const MapChart = ({ dates, setTooltipContent }) => {
     setPosition(position);
   }
 
-
   return (
     <div className="mapBox" data-tip="">
+      {/* SEARCHFILTER */}
+      <div className="boxFilter">
+        <input className="dateInput" type="date" />
+
+        <div className="searchInput">
+          <input type="number" placeholder="Procurar pelo nº do container" />
+          <button>
+            <BsSearch />
+            Pesquisar
+          </button>
+        </div>
+      </div>
+
       {/* Buttons */}
       <div className="controls">
-        <button onClick={handleZoomIn}>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            strokeWidth="3"
-          >
-            <line x1="12" y1="5" x2="12" y2="19" />
-            <line x1="5" y1="12" x2="19" y2="12" />
-          </svg>
-        </button>
-        <button onClick={handleZoomOut}>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            strokeWidth="3"
-          >
-            <line x1="5" y1="12" x2="19" y2="12" />
-          </svg>
-        </button>
+        {/* Resolver problemas dos botões - Prioridade Secundária - Finalização */}
+        <ButtonZoom zoomEffects={handleZoomIn} children={<GoPlus />} />
+        <ButtonZoom zoomEffects={handleZoomIn} children={<TiMinus />} />
       </div>
 
       {/* MAPA */}
@@ -148,10 +161,10 @@ const MapChart = ({ dates, setTooltipContent }) => {
             strokeLinecap="round"
           />
 
-          {markers.map(({ name, coordinates, date }) => (
+          {markers.map(({ name, coordinates, date, indice }) => (
             <>
               {/* marcadores */}
-              <Marker key={name} coordinates={coordinates}>
+              <Marker key={indice} coordinates={coordinates}>
                 {/* <Marker key={name} coordinates={newCoordinates}> */}
                 <g
                   fill="none"
@@ -173,24 +186,66 @@ const MapChart = ({ dates, setTooltipContent }) => {
                   {name}
                 </text>
 
-                {datesTraffic.map((item, indice) => {                  
-                  var distance = indice * 4
-                  console.log(indice)
+                <text
+                  textAnchor="middle"
+                  y={30}
+                  style={{ fontFamily: "system-ui", fill: "#ffffff" }}
+                >
+                  {date}
+                </text>
+
+                {datesContainers.map((item, indice) => {
+                  var distance = indice * 4;
+                  console.log(date)
                   return (
-                    <text
-                      y={distance}
-                      style={{ fontFamily: "system-ui", fill: "#ff8800", fontSize: "21px", display: "flex", flexDirection: "row" }}
-                    >
-                    {"."}
-                    </text>
+                    <>
+                      {date !== null &&
+                      date !== 0 &&
+                      date !== undefined &&
+                      date !== "" &&
+                      date !== testeData ? (
+                        <>
+                          <text
+                            key={indice}
+                            y={distance}
+                            style={{
+                              fontFamily: "system-ui",
+                              fill: "#ff8800",
+                              fontSize: "21px",
+                              display: "flex",
+                              flexDirection: "row",
+                            }}
+                          >
+                            {"."}
+                          </text>
+                          <text
+                            y={20}
+                            x={10}
+                            style={{
+                              fontFamily: "system-ui",
+                              fill: "#ff8800",
+                              fontSize: "21px",
+                            }}
+                          >
+                            {datesContainers.length}
+                          </text>
+                        </>
+                      ) : (
+                        <text
+                          y={20}
+                          x={10}
+                          style={{
+                            fontFamily: "system-ui",
+                            fill: "#ff8800",
+                            fontSize: "21px",
+                          }}
+                        >
+                          nd
+                        </text>
+                      )}
+                    </>
                   );
                 })}
-                    <text
-                      y={20} x={10}
-                      style={{ fontFamily: "system-ui", fill: "#ff8800", fontSize: "21px"}}
-                    >
-                    {'    '}{datesTraffic.length}
-                    </text>
               </Marker>
             </>
           ))}
