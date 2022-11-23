@@ -165,10 +165,7 @@ const MapChart = ({
 
           {markers.map(({ name, coordinates, dateMarkerMap, indice }) => (
             <>
-              {/* marcadores */}
-              {/* filter pode impactar aki */}
               <Marker key={indice} coordinates={coordinates}>
-                {/* <Marker key={name} coordinates={newCoordinates}> */}
                 <g
                   fill="none"
                   stroke="#00ff15"
@@ -204,36 +201,13 @@ const MapChart = ({
                 >
                   {dateMarkerMap}
                 </text>
-
-                {/* {datesContainers.map((item, indice) => {
-                  return (
-                    <>
-                      {item.date === date && (
-                        <>
-                          <text
-                            className="containerPoint"
-                            key={indice}
-                            style={{
-                              fontFamily: "system-ui",
-                              fill: "#ff8800",
-                              fontSize: "1rem",
-                              display: "flex",
-                              flexDirection: "row",
-                            }}
-                          >
-                          </text>
-                        </>
-                      )}
-                    </>
-                  );
-                })} */}
-
-                {datesContainers.filter(container => container.date === dateMarkerMap).map((container) => {
-
+                  
+                {datesContainers.filter(container => container.date === dateMarkerMap).map((container, index, arr) => {
                   return (
                     <>                      
                       <text
-                        y = {21}
+                        y = {15}
+                        x= {-4}
                         className="containerPoint"
                         key={indice}
                         style={{
@@ -242,7 +216,20 @@ const MapChart = ({
                           fontSize: "1rem",
                         }}
                       >
-                        {container.length}
+                        {arr.length} 
+                      </text> 
+                      <text
+                        y = {30}
+                        x= {-28}
+                        className="containerPoint"
+                        key={indice}
+                        style={{
+                          fontFamily: "system-ui",
+                          fill: "#ff8800",
+                          fontSize: "1rem",
+                        }}
+                      >
+                        container
                       </text> 
                     </>
                   );
