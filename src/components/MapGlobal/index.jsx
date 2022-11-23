@@ -1,4 +1,4 @@
-import React, { useState, memo } from "react";
+import React, { useState, memo, useMemo, useEffect } from "react";
 import {
   ComposableMap,
   Geographies,
@@ -26,15 +26,6 @@ const MapChart = ({
   dateFase3,
   dateEntregaFinal,
 }) => {
-  const datesContainers = data; //Containers
-
-  // const datesFixedPlace = [
-  //   dateSaida,
-  //   dateFase1,
-  //   dateFase2,
-  //   dateFase3,
-  //   dateEntregaFinal,
-  // ];
 
   const markers = [
     //Coord: LONG E LAT
@@ -62,7 +53,13 @@ const MapChart = ({
   ];
 
   const [position, setPosition] = useState({ coordinates: [0, 0], zoom: 1 });
-  const [filter, setFilter] = useState("");
+
+  const [filterContainer, setFilterContainer] = useState("");
+  const [containerList, setContainerList] = useState([])
+
+  useEffect(() => {
+    setContainerList(data)
+  }, []);
 
   function handleZoomIn() {
     if (position.zoom >= 4) return;
@@ -77,26 +74,30 @@ const MapChart = ({
   function handleMoveEnd(position) {
     setPosition(position);
   }
+  console.log(containerList, filterContainer)
+
+  function ContainerFiltered() {
+    return containerList.filter((item) => item.number === parseInt(filterContainer))
+  }
+
+  var filteredList = useMemo(ContainerFiltered, [filterContainer, containerList])
+  var filteredListUse = filteredList
+  console.log(filteredListUse)
 
   return (
     <div className="mapBox" data-tip="">
-      {/* SEARCHFILTER */}
       <form className="boxFilter">
-        <input className="dateInput" type="date" />
+        {/* <input className="dateInput" type="date" /> */}
 
         <div className="searchInput">
           <input
             list="numbersContainers"
             name="numbersContainers"
+            value={filterContainer}
             id="numbersContainers"
             placeholder="Procurar pelo nº do container"
-            onChange={(e) => setFilter(e.target.value)}
+            onChange={(e) => setFilterContainer(e.target.value)}
           />
-          <datalist id="numberContainers">
-            {datesContainers.map((item) => <option value={item.number}>{(item.number)}</option>
-            )}
-          </datalist>
-
           <button type="submit">
             <BsSearch />
             Pesquisar
@@ -161,8 +162,6 @@ const MapChart = ({
             strokeLinecap="round"
           />
 
-
-
           {markers.map(({ name, coordinates, dateMarkerMap, indice }) => (
             <>
               <Marker key={indice} coordinates={coordinates}>
@@ -201,8 +200,9 @@ const MapChart = ({
                 >
                   {dateMarkerMap}
                 </text>
-                  
-                {datesContainers.filter(container => container.date === dateMarkerMap).map((container, index, arr) => {
+
+                {/* Visualmente completo */}
+                {/* {data.filter(container => container.date === dateMarkerMap).map((container, index, arr) => {
                   return (
                     <>                      
                       <text
@@ -226,10 +226,33 @@ const MapChart = ({
                         style={{
                           fontFamily: "system-ui",
                           fill: "#ff8800",
+                          fontSize: ".8rem",
+                        }}
+                      >
+                        containers
+                      </text> 
+                    </>
+                  );
+                })} */}
+
+
+{/* datesContainers.filter(container => container.number === filteredListUse).map((item, index) */}
+{/*  filteredListUse.map((item, index)  */}
+                {  filteredListUse.map((item, index)  => {
+                  return (
+                    <>                      
+                      <text
+                        y = {15}
+                        x= {-4}
+                        className="containerPoint"
+                        key={index}
+                        style={{
+                          fontFamily: "system-ui",
+                          fill: "#ff8800",
                           fontSize: "1rem",
                         }}
                       >
-                        container
+                          {item.number}
                       </text> 
                     </>
                   );
