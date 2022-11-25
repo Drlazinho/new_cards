@@ -8,14 +8,13 @@ import {
   Line,
 } from "react-simple-maps";
 import "./styles.css";
-import { BsSearch } from "react-icons/bs";
+
 
 const geoUrl =
   "https://raw.githubusercontent.com/deldersveld/topojson/master/world-countries.json";
 
 const MapChart = ({
   data,
-  setTooltipContent,
   dateSaida,
   dateFase1,
   dateFase2,
@@ -68,18 +67,7 @@ const MapChart = ({
        )
   }
 
-  console.log(ContainerFiltered())
-
-  // function dateFiltered() {
-  //   return 
-  // }
-
   var filteredList = useMemo(ContainerFiltered, [filterContainer, containerList])
-  var filteredListUse = filteredList
-
-
-
-  console.log(filteredListUse)
 
   return (
     <div className="mapBox" data-tip="">
@@ -96,10 +84,6 @@ const MapChart = ({
             onChange={(e) => setFilterContainer(e.target.value)}
             
           />
-          <button type="submit" >
-            <BsSearch />
-            Pesquisar
-          </button>
         </div>
       </form>
 
@@ -130,7 +114,6 @@ const MapChart = ({
             }
           </Geographies>
 
-          {/*LINHAS - Cria estrutura de Repetição das Linhas */}
           <Line
             from={[markers[0].coordinates[0], markers[0].coordinates[1]]}
             to={[markers[1].coordinates[0], markers[1].coordinates[1]]}
@@ -198,9 +181,8 @@ const MapChart = ({
                 >
                   {dateMarkerMap}
                 </text>
-
-                {/* Visualmente completo */}
-                {/* {data.filter(container => container.date === dateMarkerMap).map((container, index, arr) => {
+                
+                {filterContainer === "" && data.filter(container => container.date === dateMarkerMap).map((container, index, arr) => {
                   return (
                     <>                      
                       <text
@@ -231,23 +213,23 @@ const MapChart = ({
                       </text> 
                     </>
                   );
-                })} */}
+                })}
 
-                {  filteredListUse.filter(container => container.date === dateMarkerMap).map((item, index)  => {
+                {filteredList.filter(container => container.date === dateMarkerMap).map((item, index)  => {
                   return (
                     <>                      
                       <text
                         y = {15}
-                        x= {-4}
+                        x= {-20}
                         className="containerPoint"
                         key={index}
                         style={{
                           fontFamily: "system-ui",
-                          fill: "#ff8800",
+                          fill: "#daff00",
                           fontSize: "1rem",
                         }}
                       >
-                          {item.number}
+                         nº {item.number}
                       </text> 
                     </>
                   );
