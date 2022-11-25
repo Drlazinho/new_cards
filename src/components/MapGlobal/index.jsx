@@ -9,10 +9,6 @@ import {
 } from "react-simple-maps";
 import "./styles.css";
 import { BsSearch } from "react-icons/bs";
-import { TiMinus } from "react-icons/ti";
-import { GoPlus } from "react-icons/go";
-import ButtonZoom from "./components/ButtonZoom";
-import { MarkerMap } from "./components/MarkersMap";
 
 const geoUrl =
   "https://raw.githubusercontent.com/deldersveld/topojson/master/world-countries.json";
@@ -61,33 +57,34 @@ const MapChart = ({
     setContainerList(data)
   }, []);
 
-  function handleZoomIn() {
-    if (position.zoom >= 4) return;
-    setPosition((pos) => ({ ...pos, zoom: pos.zoom * 2 }));
-  }
-
-  function handleZoomOut() {
-    if (position.zoom <= 1) return;
-    setPosition((pos) => ({ ...pos, zoom: pos.zoom / 2 }));
-  }
-
   function handleMoveEnd(position) {
     setPosition(position);
   }
   console.log(containerList, filterContainer)
 
   function ContainerFiltered() {
-    return containerList.filter((item) => item.number === parseInt(filterContainer))
+    return containerList.filter((item) => 
+      item.number === parseInt(filterContainer)
+       )
   }
+
+  console.log(ContainerFiltered())
+
+  // function dateFiltered() {
+  //   return 
+  // }
 
   var filteredList = useMemo(ContainerFiltered, [filterContainer, containerList])
   var filteredListUse = filteredList
+
+
+
   console.log(filteredListUse)
 
   return (
     <div className="mapBox" data-tip="">
       <form className="boxFilter">
-        {/* <input className="dateInput" type="date" /> */}
+        <input className="dateInput" type="date" disabled/>
 
         <div className="searchInput">
           <input
@@ -97,8 +94,9 @@ const MapChart = ({
             id="numbersContainers"
             placeholder="Procurar pelo nº do container"
             onChange={(e) => setFilterContainer(e.target.value)}
+            
           />
-          <button type="submit">
+          <button type="submit" >
             <BsSearch />
             Pesquisar
           </button>
@@ -235,10 +233,7 @@ const MapChart = ({
                   );
                 })} */}
 
-
-{/* datesContainers.filter(container => container.number === filteredListUse).map((item, index) */}
-{/*  filteredListUse.map((item, index)  */}
-                {  filteredListUse.map((item, index)  => {
+                {  filteredListUse.filter(container => container.date === dateMarkerMap).map((item, index)  => {
                   return (
                     <>                      
                       <text
