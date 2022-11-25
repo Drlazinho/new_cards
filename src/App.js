@@ -111,7 +111,7 @@ function App() {
           <ReactTooltip>{content}</ReactTooltip>
           <br />
           <br />
-          {/* <MapBrazil /> */}
+          <MapBrazil />
           {/* <InputTeste/> */}
         </div>
       </main>

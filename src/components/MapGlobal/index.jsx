@@ -50,6 +50,7 @@ const MapChart = ({
   const [position, setPosition] = useState({ coordinates: [0, 0], zoom: 1 });
 
   const [filterContainer, setFilterContainer] = useState("");
+  const [filterContainerData, setFilterContainerData] = useState("");
   const [containerList, setContainerList] = useState([])
 
   useEffect(() => {
@@ -59,7 +60,6 @@ const MapChart = ({
   function handleMoveEnd(position) {
     setPosition(position);
   }
-  console.log(containerList, filterContainer)
 
   function ContainerFiltered() {
     return containerList.filter((item) => 
@@ -72,7 +72,7 @@ const MapChart = ({
   return (
     <div className="mapBox" data-tip="">
       <form className="boxFilter">
-        <input className="dateInput" type="date" disabled/>
+        <input className="dateInput" type="date" onChange={(e) => setFilterContainerData(e.target.value)} disabled/>
 
         <div className="searchInput">
           <input
@@ -82,7 +82,6 @@ const MapChart = ({
             id="numbersContainers"
             placeholder="Procurar pelo nº do container"
             onChange={(e) => setFilterContainer(e.target.value)}
-            
           />
         </div>
       </form>
@@ -181,15 +180,14 @@ const MapChart = ({
                 >
                   {dateMarkerMap}
                 </text>
-                
-                {filterContainer === "" && data.filter(container => container.date === dateMarkerMap).map((container, index, arr) => {
+
+                {filterContainer === "" && filterContainerData === "" && data.filter(container => container.date === dateMarkerMap).map((container, index, arr) => {
                   return (
-                    <>                      
+                    <svg  viewBox="0 0 800 700" xmlns="https://www.w3.org/2000/svg" x={-57} key={container.number}>                      
                       <text
                         y = {15}
                         x= {-4}
                         className="containerPoint"
-                        key={indice}
                         style={{
                           fontFamily: "system-ui",
                           fill: "#ff8800",
@@ -202,7 +200,6 @@ const MapChart = ({
                         y = {30}
                         x= {-28}
                         className="containerPoint"
-                        key={indice}
                         style={{
                           fontFamily: "system-ui",
                           fill: "#ff8800",
@@ -211,7 +208,7 @@ const MapChart = ({
                       >
                         containers
                       </text> 
-                    </>
+                    </svg>
                   );
                 })}
 
@@ -222,7 +219,7 @@ const MapChart = ({
                         y = {15}
                         x= {-20}
                         className="containerPoint"
-                        key={index}
+                        key={item.number}
                         style={{
                           fontFamily: "system-ui",
                           fill: "#daff00",
