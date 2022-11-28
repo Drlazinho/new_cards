@@ -142,9 +142,8 @@ const MapChart = ({
             strokeLinecap="round"
           />
 
-          {markers.map(({ name, coordinates, dateMarkerMap, indice }) => (
-            <>
-              <Marker key={indice} coordinates={coordinates}>
+          {markers.map(({ name, coordinates, dateMarkerMap }) => (
+              <Marker key={name} coordinates={coordinates}>
                 <g
                   fill="none"
                   stroke="#00ff15"
@@ -152,7 +151,7 @@ const MapChart = ({
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   transform="translate(-12, -24)"
-                >
+                  >
                   <circle cx="12" cy="10" r="3" />
                   <path d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 6.9 8 11.7z" />
                 </g>
@@ -165,7 +164,7 @@ const MapChart = ({
                     fill: "#ffffff",
                     fontSize: ".9rem",
                   }}
-                >
+                  >
                   {name}
                 </text>
 
@@ -177,7 +176,7 @@ const MapChart = ({
                     fill: "#ffffff",
                     fontSize: ".8rem",
                   }}
-                >
+                  >
                   {dateMarkerMap}
                 </text>
 
@@ -193,7 +192,7 @@ const MapChart = ({
                           fill: "#ff8800",
                           fontSize: "1rem",
                         }}
-                      >
+                        >
                         {arr.length} 
                       </text> 
                       <text
@@ -205,7 +204,7 @@ const MapChart = ({
                           fill: "#ff8800",
                           fontSize: ".8rem",
                         }}
-                      >
+                        >
                         containers
                       </text> 
                     </svg>
@@ -214,25 +213,22 @@ const MapChart = ({
 
                 {filteredList.filter(container => container.date === dateMarkerMap).map((item, index)  => {
                   return (
-                    <>                      
-                      <text
-                        y = {15}
-                        x= {-20}
-                        className="containerPoint"
-                        key={item.number}
-                        style={{
-                          fontFamily: "system-ui",
-                          fill: "#daff00",
-                          fontSize: "1rem",
-                        }}
-                      >
+                    <text
+                    y = {15}
+                    x= {-20}
+                    className="containerPoint"
+                    key={item.number}
+                    style={{
+                      fontFamily: "system-ui",
+                      fill: "#daff00",
+                      fontSize: "1rem",
+                    }}
+                    >
                          nº {item.number}
                       </text> 
-                    </>
                   );
                 })}
               </Marker>
-            </>
           ))}
         </ZoomableGroup>
       </ComposableMap>

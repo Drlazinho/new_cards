@@ -6,21 +6,16 @@ import {
   ZoomableGroup,
   Marker,
   Line,
+  Annotation,
 } from "react-simple-maps";
-// import "./styles.css";
-import mapBrTopoJson from './mapbr.json'
+import "./styles.css";
+import mapBrTopoJson from "./mapbr.json";
+import { geoCentroid } from "d3-geo";
 import { BsSearch } from "react-icons/bs";
+import { markersLocalization } from "../../utils/localizationUFs";
 
 const MapBrazil = ({ dates, setTooltipContent }) => {
-
-    
-  const markers = [
-    //Coord: LONG E LAT
-    {
-      name: "AMVOX - Entrega",
-      coordinates: [-38.303833, -12.731694],
-    },
-  ];
+ 
 
   const [position, setPosition] = useState({ coordinates: [0, 0], zoom: 1 });
 
@@ -39,8 +34,10 @@ const MapBrazil = ({ dates, setTooltipContent }) => {
   }
 
   useEffect(() => {
-    fetch("./mapbr.json")
-  })
+    fetch("./mapbr.json");
+  });
+
+  const markers = markersLocalization
 
   return (
     <div className="mapBox" data-tip="">
@@ -101,17 +98,74 @@ const MapBrazil = ({ dates, setTooltipContent }) => {
                   geography={geo}
                   fill="#000000"
                   stroke="#853333"
-
                   strokeWidth=".2"
                 />
               ))
             }
           </Geographies>
 
-          {markers.map(({ name, coordinates, dateMarkerMap, indice }) => (
-            <>
-              <Marker key={indice} coordinates={coordinates}>
-                {/* <g
+          {/* <Line
+            from={[markers[0].coordinates[0], markers[0].coordinates[1]]}
+            to={[markers[1].coordinates[0], markers[1].coordinates[1]]}
+            stroke="#688a6b"
+            strokeWidth={1}
+            strokeLinecap="round"
+          /> */}
+
+          <Annotation
+            subject={[-37.303833, -10.731694]}
+            dx={5}
+            dy={5}
+            connectorProps={{
+              stroke: "#FF5533",
+              strokeWidth: 0.5,
+              strokeLinecap: "round",
+            }}
+          >
+            <text
+              textAnchor="end"
+              alignmentBaseline="middle"
+              fill="#F53"
+              x={3}
+              y={2}
+              style={{
+                fontFamily: "system-ui",
+                fill: "#ffffff",
+                fontSize: ".2rem",
+              }}
+            >
+              {"SE"}
+            </text>
+          </Annotation>
+          <Annotation
+            subject={[-36.303833, -9.731694]}
+            dx={6}
+            dy={3}
+            connectorProps={{
+              stroke: "#FF5533",
+              strokeWidth: 0.5,
+              strokeLinecap: "round",
+            }}
+          >
+            <text
+              textAnchor="end"
+              alignmentBaseline="middle"
+              fill="#F53"
+              x={4}
+              y={-0.1}
+              style={{
+                fontFamily: "system-ui",
+                fill: "#ffffff",
+                fontSize: ".2rem",
+              }}
+            >
+              {"AL"}
+            </text>
+          </Annotation>
+
+          {markers.map(({ name, coordinates, type, offSetY, offSetX }) => (
+            <Marker key={name} coordinates={coordinates}>
+              {/* <g
                   fill="none"
                   stroke="#00ff15"
                   strokeWidth="1"
@@ -123,36 +177,21 @@ const MapBrazil = ({ dates, setTooltipContent }) => {
                   <path d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 6.9 8 11.7z" />
                 </g> */}
 
-                <circle r={1} fill="#F53" />
+              <circle r={1} fill="#F53" />
 
-
-                <text
-                  textAnchor="middle"
-                  y={-5}
-                  style={{
-                    fontFamily: "system-ui",
-                    fill: "#ffffff",
-                    fontSize: ".2rem",
-                  }}
-                >
-                  {name}
-                </text>
-
-                <text
-                  textAnchor="middle"
-                  y={-2}
-                  style={{
-                    fontFamily: "system-ui",
-                    fill: "#ffffff",
-                    fontSize: ".15rem",
-                  }}
-                >
-                  {"ee"}
-                </text>
-
-
-              </Marker>
-            </>
+              <text
+                textAnchor="middle"
+                y={offSetY}
+                x={offSetX}
+                style={{
+                  fontFamily: "system-ui",
+                  fill: "#ffffff",
+                  fontSize: ".2rem",
+                }}
+              >
+                {name}
+              </text>
+            </Marker>
           ))}
         </ZoomableGroup>
       </ComposableMap>

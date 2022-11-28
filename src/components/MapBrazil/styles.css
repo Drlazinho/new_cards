@@ -1,0 +1,121 @@
+  svg {
+    display: inline-block;
+    vertical-align: middle;
+  }
+/*   
+  path {
+    fill: rgb(0, 82, 204);
+  } */
+  
+  .App {
+    font-family: sans-serif;
+    text-align: center;
+  }
+  
+  .mapBox {
+    background-color: rgb(33, 83, 124);
+    border: 1px solid red;
+    width: 90% !important;
+    position: relative;
+  }
+
+  .containers-traffic {
+    display: flex;
+    flex-direction: column;
+  }
+
+  
+.controls {
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 2rem;
+  margin: 1.25rem 0;
+  text-align: center;
+  flex-direction: column;
+}
+
+  .controls > button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    height: 3rem;
+    width: 3rem;
+    background: #ffffff;
+    color: rgb(0, 0, 0);
+    border: 0;
+  }
+  .controls > button:first-child {
+    margin-right: 0.25rem;
+  }
+  
+  @media (max-width: 500px) {
+    .mapBox {
+      width: 100% !important;
+    }
+
+    .controls{
+      margin: 0;
+      left: 1.3rem;
+    }
+
+    .controls > button {
+      height: 2rem;
+      width: 2rem;
+    }
+  }
+
+  /* Input Search */
+
+  .searchInput{
+    background-color: #fff;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: .2rem .5rem;
+    gap: 1rem; 
+    width: 23rem;
+    border-radius: 8px;
+    border: 1px solid #bebebe;
+  }
+
+  .searchInput > input {
+    outline: none;
+    border: none;
+    width: 100%;
+  }
+
+  button  {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    outline: none;
+    border-radius: 8px;
+    padding: .2rem .5rem;
+    border: 1px solid #bebebe;
+    background-color: #238dff;
+    color: #ffff;
+  }
+
+  /* Data */
+
+  .dateInput {
+    border-radius: 8px;
+    padding: .4rem 1rem;
+    outline: none;
+    border: 1px solid #bebebe;
+  }
+
+  .boxFilter {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+  }
+
+  .containerPoint {
+    cursor: pointer !important;
+
+  }
+
+ 
