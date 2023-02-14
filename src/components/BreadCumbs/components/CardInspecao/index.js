@@ -12,7 +12,7 @@ import targetInactiveImg from '../../../../assets/target-inactive.png';
 import truckInactiveImg from '../../../../assets/truck-inactive.png';
 import { Checkbox } from '../Checkbox';
 
-export default function Card({ name, date, idImage, horizontalStack, breadToInspecao}) {
+export default function CardInspecao({ name, date, idImage, horizontalStack, breadToInspecao}) {
   function renderSwitchActive(number) {
     switch (number) {
       case 1 || '1': {

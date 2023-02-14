@@ -1,8 +1,8 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Container = styled.div`
   display: inline-flex;
-  flex-direction: ${(props) => (props.horizontalStack? 'row': 'column')};
+  flex-direction: ${(props) => (props.horizontalStack ? "row" : "column")};
   align-items: center;
   position: relative;
   justify-content: space-around;
@@ -15,14 +15,16 @@ export const Container = styled.div`
   }
 
   @media (max-width: 770px) {
-    flex-direction: column;
-    gap: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
   }
+
   @media (min-width: 770px) {
-    flex-direction: ${(props) => (props.breadToInpecao ? 'row' : 'row')};
+    flex-direction: ${(props) => (props.breadToInpecao ? "row" : "row")};
   }
 
   @media (min-width: 1700px) {
-    flex-direction: ${(props) => (props.horizontalStack? 'column': 'row')};
+    flex-direction: ${(props) => (props.horizontalStack ? "column" : "row")};
   }
 `;

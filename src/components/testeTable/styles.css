@@ -1,0 +1,17 @@
+.table {
+    
+}
+.table-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    max-width: 800px;
+    border: 2px solid red;
+}
+
+.table-results {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    max-width: 800px;
+    border: 2px solid green;
+}

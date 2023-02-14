@@ -15,7 +15,9 @@ import { BsSearch } from "react-icons/bs";
 import { markersLocalization } from "../../utils/localizationUFs";
 
 const MapBrazil = ({ dates, setTooltipContent }) => {
- 
+  const [filterContainer, setFilterContainer] = useState("");
+  const [filterContainerData, setFilterContainerData] = useState("");
+  const [containerList, setContainerList] = useState([])
 
   const [position, setPosition] = useState({ coordinates: [0, 0], zoom: 1 });
 
@@ -35,24 +37,32 @@ const MapBrazil = ({ dates, setTooltipContent }) => {
 
   useEffect(() => {
     fetch("./mapbr.json");
-  });
+  }, []);
 
-  const markers = markersLocalization
+  const markers = markersLocalization;
 
   return (
     <div className="mapBox" data-tip="">
       {/* SEARCHFILTER */}
-      {/* <div className="boxFilter">
-        <input className="dateInput" type="date" />
+      <form className="boxFilter">
+        <input
+          className="dateInput"
+          type="date"
+          onChange={(e) => setFilterContainerData(e.target.value)}
+          disabled
+        />
 
         <div className="searchInput">
-          <input type="number" placeholder="Procurar pelo nº do container" />
-          <button>
-            <BsSearch />
-            Pesquisar
-          </button>
+          <input
+            list="numbersContainers"
+            name="numbersContainers"
+            // value={filterContainer}
+            id="numbersContainers"
+            placeholder="Procurar pelo nº do container"
+            // onChange={(e) => setFilterContainer(e.target.value)}
+          />
         </div>
-      </div> */}
+      </form>
 
       {/* Buttons */}
       <div className="controls">

@@ -1,0 +1,90 @@
+{
+    "avaliadores": [
+        {
+            "setor": "Produção",
+            "nome": "Alexandre",
+            "quest": {
+                "quest1": "Qualidade Cont1",
+                "quest2": "Qualidade Cont2",
+                "quest3": "Qualidade Cont3"
+            }
+        },
+        {
+            "setor": "Produção",
+            "nome": "Arthur",
+            "quest": {
+                "quest1": "Qualidade Produção1",
+                "quest2": "Qualidade Produção2",
+                "quest3": "Qualidade Produção3"
+            }
+        },
+        {
+            "setor": "Financeiro",
+            "nome": "Alexandre",
+            "quest": {
+                "quest1": "Financ Cont1",
+                "quest2": "Financ Cont2",
+                "quest3": "Financ Cont3"
+            }
+        },
+        {
+            "setor": "Pos-venda",
+            "nome": "Arthur",
+            "quest": {
+                "quest1": "Pos-venda Cont1",
+                "quest2": "Pos-venda Cont2",
+                "quest3": "Pos-venda Cont3"
+            }
+        }
+    ],
+    "fornecedores": [
+        {
+            "id": 1,
+            "fornecedor": "Fornecedor1",
+            "dateProducao": "22102022",
+            "dateInspecao": "24102022",
+            "dateTransporte": "30102022",
+            "dateEntrega": "05112022",
+            "dataPrevista": "08112022",
+            "pagamento": "10000",
+            "situation": true,
+            "ranking": 2
+        },
+        {
+            "id": 2,
+            "fornecedor": "Fornecedor2",
+            "dateProducao": "281022",
+            "dateInspecao": "291022",
+            "dateTransporte": "301122",
+            "dateEntrega": "141222",
+            "dataPrevista": "08122022",
+            "pagamento": "15453",
+            "situation": false,
+            "ranking": 3
+        },
+        {
+            "id": 3,
+            "fornecedor": "Fornecedor3",
+            "dateProducao": "22102022",
+            "dateInspecao": "12112022",
+            "dateTransporte": "27122022",
+            "dateEntrega": "",
+            "dataPrevista": "30112022",
+            "pagamento": "178436",
+            "situation": false,
+            "ranking": 5
+        },
+        {
+            "id": 4,
+            "fornecedor": "Fornecedor4",
+            "dateProducao": "22102022",
+            "dateInspecao": "",
+            "dateTransporte": "",
+            "dateEntrega": "",
+            "dataPrevista": "08112022",
+            "pagamento": "18436",
+            "situation": false,
+            "ranking": 4
+        }
+    ]
+}

@@ -16,3 +16,8 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+.mapa {
+  width: 600px;
+  height: 400px;
+}

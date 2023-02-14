@@ -1,13 +1,5 @@
 export const markersLocalization = [
     //Coord: LONG E LAT
-    // {
-    //   name: "SE",
-    //   coordinates: [-28.303833, -12.731694],
-    // },
-    // {
-    //   name: "AL",
-    //   coordinates: [-28.303833, -12.731694],
-    // },
     {
       name: "AMVOX",
       coordinates: [-38.303833, -12.731694],

@@ -1,5 +1,26 @@
-import styled from 'styled-components';
-import amvox from '../../../../assets/amvox.png';
+import styled, { css } from "styled-components";
+import amvox from "../../../../assets/amvox.png";
+
+const linhaProducaoETransporte = css`
+  content: "";
+  position: absolute;
+  width: 100%;
+  top: 30%;
+  left: 45%;
+  height: 30%;
+  z-index: 1;
+`;
+
+const linhaInspecao = css`
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: rotate(330deg);
+  top: 100%;
+  left: -55%;
+  height: 15%;
+  z-index: 11;
+`;
 
 export const Container = styled.div`
   display: inline-flex;
@@ -13,31 +34,31 @@ export const Container = styled.div`
 
   /* LINE CARD */
   &:not(:last-child)::after {
-    content: '';
+    content: "";
     position: absolute;
-    background-color: ${(props) => (props.checked ? '#25cf4a' : '#9e9e9e')};
-    width: ${(props) => (props.horizontalStack ? '100%' : '50%')};
-    top: ${(props) => (props.horizontalStack ? '1' : '60%')};
-    left: ${(props) => (props.horizontalStack ? '20%' : '1')};
-    height: ${(props) => (props.horizontalStack ? '40%' : '75%')};
+    background-color: ${(props) => (props.checked ? "#25cf4a" : "#9e9e9e")};
+    width: ${(props) => (props.horizontalStack ? "100%" : "50%")};
+    top: ${(props) => (props.horizontalStack ? "1" : "60%")};
+    left: ${(props) => (props.horizontalStack ? "20%" : "1")};
+    height: ${(props) => (props.horizontalStack ? "40%" : "75%")};
     z-index: 1;
   }
 
-
   @media (max-width: 770px) {
     &:not(:last-child)::after {
-      content: '';
+      content: "";
       position: absolute;
-      width: 20%;
-      top: 80%;
-      left: 45%;
-      height: 50%;
+      width: 100%;
+      transform: rotate(330deg);
+      top: 100%;
+      left: -55%;
+      height: 15%;
       z-index: 1;
     }
   }
   @media (min-width: 1700px) {
     &:not(:last-child)::after {
-      content: '';
+      content: "";
       position: absolute;
       width: 20%;
       top: 80%;
@@ -56,8 +77,8 @@ export const Content = styled.div`
   background-image: url(${amvox});
   background-repeat: no-repeat;
   background-size: auto 100%;
-  background-color: ${(props) => (props.checked ? '#000' : '#424242')};
-  color: ${(props) => (props.checked ? '#00FF38' : '#555555')};
+  background-color: ${(props) => (props.checked ? "#000" : "#424242")};
+  color: ${(props) => (props.checked ? "#00FF38" : "#555555")};
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -68,7 +89,7 @@ export const Content = styled.div`
   z-index: 2;
 
   .line-div {
-    background-color: ${(props) => (props.checked ? '#00FF38' : '#555555')};
+    background-color: ${(props) => (props.checked ? "#00FF38" : "#555555")};
     height: 5rem;
     width: 2px;
     opacity: 1;
@@ -109,7 +130,7 @@ export const Content = styled.div`
     gap: 1px;
 
     .line-div {
-      background-color: ${(props) => (props.checked ? '#00FF38' : '#555555')};
+      background-color: ${(props) => (props.checked ? "#00FF38" : "#555555")};
       height: 2px;
       width: 70%;
       opacity: 1;
@@ -125,7 +146,7 @@ export const Content = styled.div`
   }
 
   @media (max-width: 500px) {
-    color: ${(props) => (props.checked ? '#00FF38' : '#555555')};
+    color: ${(props) => (props.checked ? "#00FF38" : "#555555")};
 
     .interativeUser {
       gap: 0.5rem;

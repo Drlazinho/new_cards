@@ -1,9 +1,9 @@
-import { Container } from './styles';
-import React from 'react';
-import Card from './components/Card';
-import CardInspecao from './components/CardInspecao';
+import { Container } from "./styles";
+import React from "react";
+import Card from "./components/Card";
+import CardInspecao from "./components/CardInspecao";
 
-export default function BreadCrump({
+export default function BreadCrumpMobile({
   name1,
   date1,
   idImage1,
@@ -17,7 +17,8 @@ export default function BreadCrump({
   date4,
   idImage4,
   horizontalStack,
-  breadToInspecao
+  breadToInspecao,
+  toMobile
 }) {
   return (
     <>
@@ -29,13 +30,24 @@ export default function BreadCrump({
           horizontalStack={horizontalStack}
           breadToInspecao={breadToInspecao}
         />
-        <CardInspecao
-          name={name2}
-          idImage={idImage2}
-          date={date2}
-          horizontalStack={horizontalStack}
-          breadToInspecao={breadToInspecao}
-        />
+        {toMobile ? (
+          <CardInspecao
+            name={name2}
+            idImage={idImage2}
+            date={date2}
+            horizontalStack={horizontalStack}
+            breadToInspecao={breadToInspecao}
+          />
+        ) : (
+          <Card
+            name={name2}
+            idImage={idImage2}
+            date={date2}
+            horizontalStack={horizontalStack}
+            breadToInspecao={breadToInspecao}
+          />
+        )}
+
         <Card
           name={name3}
           idImage={idImage3}

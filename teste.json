@@ -1,0 +1,29 @@
+{
+    "type": "GeometryCollection",
+    "geometries": [
+        {
+            "arcs": [
+                [
+                    0,
+                    1,
+                    2,
+                    3
+                ]
+            ],
+            "type": "Polygon",
+            "properties": {
+                "GID_1": "BRA.1_1",
+                "GID_0": "BRA",
+                "COUNTRY": "Brazil",
+                "NAME_1": "Acre",
+                "VARNAME_1": "NA",
+                "NL_NAME_1": "NA",
+                "TYPE_1": "Estado",
+                "ENGTYPE_1": "State",
+                "CC_1": "NA",
+                "HASC_1": "BR.AC",
+                "ISO_1": "BR-AC"
+            }
+        }
+    ]
+}

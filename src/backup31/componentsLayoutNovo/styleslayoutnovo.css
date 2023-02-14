@@ -1,0 +1,99 @@
+.layout {
+    background: rgb(39, 38, 38);
+    min-height: 100%;
+  }
+  
+  .card-child {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    margin-top: 5px;
+    padding: 12px;
+    border-radius: 15px;
+    background: rgba(243, 239, 239, 0.959);
+    width: 99%;
+  }
+  
+  .teste-button-mui{
+    position: absolute;
+  }
+  
+  .text-dollar-popover{
+    color: #000;
+  }
+  
+  .circle-dollar {
+    z-index: 9;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff !important;
+    overflow: hidden;
+  }
+  
+  footer {
+    font-size: 16px;
+    color: white;
+    padding: 12px;
+  }
+  
+  .sidebar {
+    position: absolute;
+    z-index: 10;
+  }
+  
+  .icons-contacts-modal{
+    display: flex;
+    justify-content: space-around;
+  
+  }
+  
+  .buttonClose-contacts-modal {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: transparent !important;
+    border: none;
+    color: #933333;
+  }
+  
+  .main {
+    /* padding-left: 50px; */
+  }
+  .chamada-app-button {
+    position: fixed;
+    bottom: 1rem;
+    right: 2rem;
+    background-color: rgba(255, 0, 0, 0.247);
+    padding: 1rem;
+    width: fit-content;
+    border-radius: 50%;
+    border: 4px solid rgba(0, 0, 0, 0.247);
+    color: aliceblue;
+    display: flex;
+    transition: linear .2s;
+  }
+  
+  .chamada-app-button:hover {
+    background-color: rgb(255, 0, 0);
+    border: 4px solid rgb(0, 0, 0);
+    transform: rotate(340deg);
+    cursor: pointer;
+  }
+  /* clip-path: ellipse(27% 20% at 98% 47%); */
+  
+  
+  @media (max-width: 500px) {
+    .chamada-app-button {
+      bottom: 1rem;
+    right: 1rem;
+    padding: .5rem;
+    }
+  }
+  
